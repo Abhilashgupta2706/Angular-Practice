@@ -1,27 +1,29 @@
-# AngularPractice
+# React Practice
+You can visit [React Website](https://all-react-practice.web.app/) to see it in action 😉. <br /> 
+This repository contains all my React JS practice codes. 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.7.
+### Setup & Installtion
 
-## Development server
+Make sure you have the latest version of npm installed.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```bash
+git clone <repo-url>
+```
 
-## Code scaffolding
+```bash
+npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Running The App
 
-## Build
+```bash
+ng serve
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Viewing The App
 
-## Running unit tests
+Go to `http://localhost:4200/`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## About me
+If you want to know more about me, you can visit my [Portfolio Website](https://abhilashgupta.ml/).</br>
+If you have any creative ideas & you want to discuss them, please feel free to contact me anytime. I'm always looking for such opportunities ❤️
