@@ -1,5 +1,5 @@
 # React Practice
-You can visit [React Website](https://all-react-practice.web.app/) to see it in action 😉. <br /> 
+You can visit [React Website](https://all-angular-practice.web.app/) to see it in action 😉. <br /> 
 This repository contains all my React JS practice codes. 
 
 ### Setup & Installtion
