@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DataAutocompleteComponent } from './Components/data-autocomplete/data-autocomplete.component';
 import { FormValidationComponent } from './Components/form-validation/form-validation.component';
 import { HomeComponent } from './Components/home/home.component';
 import { HorizontalStepperComponent } from './Components/stepper-form/horizontal-stepper/horizontal-stepper.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: 'vertical-stepper', component: VerticalStepperComponent }
     ]
   },
+  { path: 'data-autocompelete', component: DataAutocompleteComponent },
 ];
 
 @NgModule({

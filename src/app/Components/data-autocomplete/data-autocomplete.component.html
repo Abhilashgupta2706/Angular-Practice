@@ -1,0 +1,36 @@
+<form [formGroup]="locationForm">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <h3>Country</h3>
+                <select formControlName="country" name="country" class="countries form-control" id="countryId"
+                    (change)="countrySelected($event.target)" [(ngModel)]="selectedCountry">
+                    <option *ngFor="let country of countries" [value]="country.isoCode">
+                        {{country.name}}</option>
+                </select>
+
+            </div>
+            <div class="col-sm-4">
+                <h3>State</h3>
+                <select formControlName="state" name="state" class="states form-control" id="stateId"
+                    (change)="stateSelected($event.target)" [(ngModel)]="selectedState">
+                    <option value="">Select State</option>
+                    <option *ngFor="let state of states" [value]="state.isoCode">{{state.name}}</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <h3>City</h3>
+                <select formControlName="city" name="city" class="cities form-control" id="cityId">
+                    <option value="">Select City</option>
+                    <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="btns">
+        <button mat-raised-button (click)="onSubmit()" color="primary">Submit</button>
+        <button mat-raised-button (click)="locationForm.reset()" color="Warn">Reset</button>
+    </div>
+</form>

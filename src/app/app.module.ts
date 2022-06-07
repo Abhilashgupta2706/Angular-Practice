@@ -26,6 +26,7 @@ import { HorizontalStepperComponent } from './Components/stepper-form/horizontal
 import { VerticalStepperComponent } from './Components/stepper-form/vertical-stepper/vertical-stepper.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { StepperFormDialogBoxComponent } from './Components/stepper-form/stepper-form-dialog-box/stepper-form-dialog-box.component';
+import { DataAutocompleteComponent } from './Components/data-autocomplete/data-autocomplete.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { StepperFormDialogBoxComponent } from './Components/stepper-form/stepper
     StepperFormComponent,
     HorizontalStepperComponent,
     VerticalStepperComponent,
-    StepperFormDialogBoxComponent
+    StepperFormDialogBoxComponent,
+    DataAutocompleteComponent
   ],
   imports: [
     BrowserModule,
