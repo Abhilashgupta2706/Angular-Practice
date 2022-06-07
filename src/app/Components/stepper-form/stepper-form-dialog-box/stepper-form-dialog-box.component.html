@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>Entered Information</h2>
+<mat-dialog-content class="mat-typography">
+
+    <table class="example-full-width" cellspacing="0">
+
+        <tr>
+            <td>
+                <h3>First Name : <strong>{{data.fname}}</strong></h3>
+            </td>
+            <td>
+                <h3>Last Name : <strong>{{data.lname}}</strong></h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>Age : <strong>{{data.age}}</strong></h3>
+            </td>
+            <td>
+                <h3>Gender : <strong>{{data.gender}}</strong></h3>
+            </td>
+        </tr>
+        <hr>
+        <tr>
+            <td>
+                <h3>Address: <strong>{{data.address}}</strong></h3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3>City: <strong>{{data.city}}</strong></h3>
+            </td>
+            <td>
+                <h3>State: <strong>{{data.state}}</strong></h3>
+            </td>
+            <td>
+                <h3>Postal Code: <strong>{{data.postalCode}}</strong></h3>
+            </td>
+        </tr>
+        <hr>
+        <tr>
+            <td>
+                <h3>Email ID : <strong>{{data.emailID}}</strong></h3>
+            </td>
+            <td>
+                <h3>Mobile Number : <strong>{{data.mobileNum}}</strong></h3>
+            </td>
+        </tr>
+        <hr>
+        <tr>
+            <td>
+                <h3>Message : <strong>{{data.message}}</strong></h3>
+            </td>
+        </tr>
+        
+    </table>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,21 @@
+<div class="container">
+
+
+    <div class="child_route_btns">
+        <button mat-raised-button color="primary" routerLinkActive="active" routerLink="horizontal-stepper">Horizontal
+            Stepper</button>
+        <button mat-raised-button color="secondary" routerLinkActive="active" routerLink="vertical-stepper">Vertical
+            Stepper</button>
+    </div>
+
+    <p>
+        <mat-icon>touch_app</mat-icon>
+        Click on the above buttons to render diffrent stepper forms
+    </p>
+
+
+    <div class="steppers">
+        <router-outlet></router-outlet>
+    </div>
+
+</div>

@@ -1,0 +1,154 @@
+<mat-vertical-stepper>
+
+    <section class="ng_templates">
+        <ng-template matStepperIcon="userInfo">
+            <mat-icon>person</mat-icon>
+        </ng-template>
+
+        <ng-template matStepperIcon="home">
+            <mat-icon>home</mat-icon>
+        </ng-template>
+
+        <ng-template matStepperIcon="contact">
+            <mat-icon>phone</mat-icon>
+        </ng-template>
+
+        <ng-template matStepperIcon="message">
+            <mat-icon>message</mat-icon>
+        </ng-template>
+    </section>
+
+    <form [formGroup]="userInfoForm">
+        <mat-step linear="true" label="User Info" state="userInfo">
+
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>First name</mat-label>
+                            <input autocomplete="off" formControlName="fname" matInput>
+                            <mat-error>Please fill this field without numbers</mat-error>
+
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Last Name</mat-label>
+                            <input autocomplete="off" formControlName="lname" matInput>
+                            <mat-error>Please fill this field without numbers</mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Age</mat-label>
+                            <input autocomplete="off" formControlName="age" type="number" max="100" matInput>
+                            <mat-error>Please fill this field with valid data</mat-error>
+                        </mat-form-field>
+                    </td>
+
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Select an option</mat-label>
+                            <mat-select formControlName="gender" [(value)]="selected">
+                                <mat-option value="none">None</mat-option>
+                                <mat-option value="male">Male</mat-option>
+                                <mat-option value="female">Female</mat-option>
+                                <mat-option value="prefernottosay">Perfer not to say</mat-option>
+                            </mat-select>
+                            <mat-error>Must select an one option</mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+
+            <button class="btn" mat-flat-button matStepperNext color="primary">Next</button>
+        </mat-step>
+
+        <mat-step linear="true" label="Address" state="home">
+
+            <p>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Address</mat-label>
+                    <textarea autocomplete="off" formControlName="address" matInput></textarea>
+                    <mat-error>Please fill this field</mat-error>
+                </mat-form-field>
+            </p>
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>City</mat-label>
+                            <input autocomplete="off" formControlName="city" matInput placeholder="Ex. Pune">
+                            <mat-error>Please fill this field without numbers</mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>State</mat-label>
+                            <input autocomplete="off" formControlName="state" matInput placeholder="Ex. Maharashtra">
+                            <mat-error>Please fill this field without numbers</mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Postal Code</mat-label>
+                            <input autocomplete="off" formControlName="postalCode" matInput #postalCode minlength="5"
+                                maxlength="10">
+                            <mat-error>Please fill this field. Ex: 411033</mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+
+            <button class="btn" mat-raised-button matStepperPrevious>Back</button>
+            <button class="btn" mat-flat-button matStepperNext color="primary">Next</button>
+        </mat-step>
+
+        <mat-step label="Contact Details" state="contact">
+
+
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input autocomplete="off" formControlName="emailID" type="email" matInput
+                                placeholder="Ex. pat@example.com">
+                            <mat-error>Please fill this field, Ex: name@service.in</mat-error>
+                        </mat-form-field>
+                    </td>
+                    <td>
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Mobile</mat-label>
+                            <input autocomplete="off" formControlName="mobileNum" type="tel" matInput minlength="10"
+                                maxlength="14">
+                            <mat-error>Please fill this field, Ex: +91 555-555-5555 without "-" & Space
+                            </mat-error>
+                        </mat-form-field>
+                    </td>
+                </tr>
+            </table>
+
+            <button class="btn" mat-raised-button matStepperPrevious>Back</button>
+            <button class="btn" mat-flat-button matStepperNext color="primary">Next</button>
+        </mat-step>
+
+        <mat-step label="Message" state="message">
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Message</mat-label>
+                <textarea autocomplete="off" formControlName="message" rows="5" matInput maxlength="306"
+                    placeholder="Ex. I need help with..."></textarea>
+                <mat-error>Please fill this field</mat-error>
+            </mat-form-field>
+
+            <button class="btn" mat-raised-button matStepperPrevious>Back</button>
+            <button [disabled]="userInfoForm.invalid" class="btn" mat-flat-button matStepperNext color="primary"
+                (click)="onSubmit()">Submit</button>
+            <span class="error_msg" [hidden]="userInfoForm.valid">Make sure to fill all input fields correctly to submit
+                the form.</span>
+        </mat-step>
+    </form>
+</mat-vertical-stepper>
