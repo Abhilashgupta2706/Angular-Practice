@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Entered Information</h2>
+<mat-dialog-content class="mat-typography">
+
+    <h3>First Name : <strong>{{data.fname}}</strong></h3>
+    <h3>Last Name : <strong>{{data.lname}}</strong></h3>
+    <h3>Mobile Number : <strong>{{data.mobileNum}}</strong></h3>
+    <h3>Email ID : <strong>{{data.emailID}}</strong></h3>
+    <h3>Date 0f Birth : <strong>{{data.dob | date}}</strong></h3>
+    <h3>Gender : <strong>{{data.gender}}</strong></h3>
+    <h3>Address : <strong>{{data.address}}</strong></h3>
+    <h3>Profession : <strong>{{data.profession}}</strong></h3>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>

@@ -1,36 +1,95 @@
 <div class="container">
-    <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm">
+    <form [formGroup]="userForm">
 
-        <div class="form-group my-2">
-            <label for="exampleInputName1">Name</label>
-            <input formControlName='name' type="Name" class="form-control" id="exampleInputName1" placeholder="Name">
-            <div *ngIf="(name.touched || name.dirty) && name.invalid">
-                <small class="error" *ngIf="name.errors?.required">Name Required</small>
-                <small class="error" *ngIf="name.errors?.pattern">Name can containe only characters</small>
-            </div>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input autocomplete="off" matInput formControlName="fname">
+                <mat-error *ngIf="f['fname'].errors?.['required']">Please fill this field</mat-error>
+                <mat-error *ngIf="f['fname'].errors?.['pattern']">Name cannot contain numbers</mat-error>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input autocomplete="off" matInput formControlName="lname">
+                <mat-error *ngIf="f['lname'].errors?.['required']">Please fill this field</mat-error>
+                <mat-error *ngIf="f['lname'].errors?.['pattern']">Name cannot contain numbers</mat-error>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+                <mat-label>Enter Mobile Number</mat-label>
+                <input autocomplete="off" matInput #input maxlength="10" placeholder="Ex. Nougat" minlength="10" maxlength="10"
+                    formControlName="mobileNum">
+                <mat-error *ngIf="f['mobileNum'].errors?.['required']">Please fill this field</mat-error>
+                <mat-error *ngIf="f['mobileNum'].errors?.['pattern']">Enter valid Number</mat-error>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your email</mat-label>
+                <input autocomplete="off" matInput placeholder="pat@example.com" formControlName="emailID">
+                <mat-error *ngIf="f['emailID'].errors?.['required']">Please fill this field </mat-error>
+                <mat-error *ngIf="f['emailID'].errors?.['pattern']">Enter valid email-ID</mat-error>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input autocomplete="off" matInput [matDatepicker]="picker" formControlName="dob">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="f['dob'].errors?.['required']">Please fill this field </mat-error>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <label id="example-radio-group-label">Select your Gender</label>
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                [(ngModel)]="gender" formControlName="gender">
+                <mat-radio-button class="example-radio-button" *ngFor="let season of genderList" [value]="season">
+                    {{season}}
+                </mat-radio-button>
+                <mat-error *ngIf="f['gender'].errors?.['required']">You must select a gender</mat-error>
+            </mat-radio-group>
+        </p>
+
+        <p>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="Ex. 100 Main St" formControlName="address"></textarea>
+                <mat-error *ngIf="f['address'].errors?.['required']">Please fill your address</mat-error>
+            </mat-form-field>
+        </p>
+
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Profession</mat-label>
+                <mat-select formControlName="profession">
+                    <mat-option *ngFor="let food of professions" [value]="food.value">
+                        {{food.viewValue}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="f['profession'].errors?.['required']">Please select a profession </mat-error>
+            </mat-form-field>
+        </p>
+
+        <div class="btns">
+            <!-- <button [disabled]="userForm.invalid" mat-raised-button color="primary" (click)="onSubmit()"
+                (click)="openDialog()">
+                Submit
+            </button> -->
+            <button mat-raised-button color="primary" (click)="onSubmit()">
+                Submit
+            </button>
+            <button [disabled]="userForm.untouched" mat-raised-button color="warn" (click)="resetForm()">Reset</button>
         </div>
-
-        <div class="form-group my-2">
-            <label for="exampleInputEmail">Email address</label>
-            <input formControlName='email' type="email" class="form-control" id="exampleInputEmail"
-                placeholder="Enter email">
-            <div *ngIf="(email.touched || email.dirty) && email.invalid">
-                <small class="error" *ngIf="email.errors?.required">Email Required</small>
-                <small class="error" *ngIf="email.errors?.pattern">Email is not valid</small>
-            </div>
-        </div>
-
-        <div class="form-group my-2">
-            <label for="exampleInputMobileNumber">Mobile Number</label>
-            <input formControlName='Mobilenumber' type="MobileNumber" class="form-control" id="exampleInputMobileNumber"
-                placeholder="Mobile Number">
-            <div *ngIf="(Mobilenumber.touched || Mobilenumber.dirty) && Mobilenumber.invalid">
-                <small class="error" *ngIf="Mobilenumber.errors?.required">Mobile Number Required</small>
-                <small class="error" *ngIf="Mobilenumber.errors?.pattern">Enter valid mobile number.</small>
-            </div>
-        </div>
-
-        <button type="submit" [disabled]="registrationForm.invalid" class="btn btn-primary my-2">Submit</button>
 
     </form>
 </div>
