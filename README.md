@@ -1,6 +1,7 @@
 # React Practice
 You can visit [React Website](https://all-angular-practice.web.app/) to see it in action 😉. <br /> 
-This repository contains all my React JS practice codes. 
+This repository contains all my React JS practice codes. <br />
+###### Note- I didn't concentrate on responsiveness, but rather on my fundamentals of Angular. So please visit on a computer or laptop screen.
 
 ### Setup & Installtion
 
