@@ -3,26 +3,27 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <h3>Country</h3>
-                <select formControlName="country" name="country" class="countries form-control" id="countryId"
+                <h3>Select Country</h3>
+                <select formControlName="country" class="countries form-control"
                     (change)="countrySelected($event.target)" [(ngModel)]="selectedCountry">
+                    <option selected value="Select country">--Select a country--</option>
                     <option *ngFor="let country of countries" [value]="country.isoCode">
                         {{country.name}}</option>
                 </select>
 
             </div>
             <div class="col-sm-4">
-                <h3>State</h3>
-                <select formControlName="state" name="state" class="states form-control" id="stateId"
-                    (change)="stateSelected($event.target)" [(ngModel)]="selectedState">
-                    <option value="">Select State</option>
+                <h3>Select State</h3>
+                <select formControlName="state" class="states form-control" (change)="stateSelected($event.target)"
+                    [(ngModel)]="selectedState">
+                    <option selected value="Select State">--Select a state--</option>
                     <option *ngFor="let state of states" [value]="state.isoCode">{{state.name}}</option>
                 </select>
             </div>
             <div class="col-sm-4">
-                <h3>City</h3>
-                <select formControlName="city" name="city" class="cities form-control" id="cityId">
-                    <option value="">Select City</option>
+                <h3>Select City</h3>
+                <select formControlName="city" class="cities form-control">
+                    <option selected value="Select State">--Select a city--</option>
                     <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
                 </select>
             </div>
@@ -31,6 +32,23 @@
 
     <div class="btns">
         <button mat-raised-button (click)="onSubmit()" color="primary">Submit</button>
-        <button mat-raised-button (click)="locationForm.reset()" color="Warn">Reset</button>
+        <button mat-raised-button (click)="locationForm.reset()" color="warn">Reset</button>
     </div>
 </form>
+
+<div class="result_container">
+
+    <div *ngIf="location === undefined; else elseBlock">
+        <div class="not_yet_selected">
+            <mat-icon>location_city</mat-icon>
+            Please select options from above input fields and submit to show results
+        </div>
+    </div>
+    <ng-template #elseBlock>
+        <h3>Country you selected: <strong>{{location[0]}}</strong></h3>
+        <br>
+        <h3>State you selected: <strong>{{location[1]}}</strong></h3>
+        <br>
+        <h3> City you selected: <strong>{{location[2]}}</strong></h3>
+    </ng-template>
+</div>

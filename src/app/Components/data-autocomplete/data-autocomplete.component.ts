@@ -9,15 +9,14 @@ import { Country, State, City } from 'country-state-city/dist/';
 })
 export class DataAutocompleteComponent implements OnInit {
 
-
-
-
   selectedCountry: number = 0;
   selectedState: number = 0;
 
   countries!: any[]
   states!: any[]
   cities!: any[]
+
+  location!: any
 
   locationForm !: FormGroup
 
@@ -32,11 +31,10 @@ export class DataAutocompleteComponent implements OnInit {
     // console.log(City.getAllCities())]
 
     this.locationForm = this.builder.group({
-      country: ['', Validators.required],
-      state: ['', Validators.required],
-      city: ['', Validators.required]
+      country: ['--Select an option--', Validators.required],
+      state: ['--Select an option--', Validators.required],
+      city: ['--Select an option--', Validators.required]
     })
-
     this.countries = Country.getAllCountries()
   }
 
@@ -61,7 +59,10 @@ export class DataAutocompleteComponent implements OnInit {
 
     var city = this.locationForm.value['city']
 
-    // alert(`${country}, ${state}, ${city}`)
-    console.log(`${country ? country['name'] : null}, ${state ? state['name'] : null  }, ${city}`)
+    this.location = [
+      country ? country['name'] : null,
+      state ? state['name'] : null,
+      city
+    ]
   }
 }

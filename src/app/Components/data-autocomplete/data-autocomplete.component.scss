@@ -1,7 +1,30 @@
-.btns{
+.btns {
     margin: 30px auto;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.result_container {
+    max-width: 1200px;
+    margin: 16px auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.example-full-width {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.not_yet_selected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
