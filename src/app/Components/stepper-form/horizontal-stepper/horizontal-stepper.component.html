@@ -1,4 +1,4 @@
-<mat-horizontal-stepper>
+<mat-horizontal-stepper labelPosition="bottom">
 
     <section class="ng_templates">
         <ng-template matStepperIcon="userInfo">
@@ -18,17 +18,17 @@
         </ng-template>
     </section>
 
-    <form [formGroup]="userInfoForm">
-        <mat-step linear="true" label="User Info" state="userInfo">
-
+    <mat-step errorMessage="Something is wrong" linear="true" label="User Info" state="userInfo"
+        [stepControl]="userInfoForm">
+        <form [formGroup]='userInfoForm'>
             <table class="example-full-width" cellspacing="0">
+
                 <tr>
                     <td>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>First name</mat-label>
                             <input autocomplete="off" formControlName="fname" matInput>
                             <mat-error>Please fill this field without numbers ONLY FIRST NAME</mat-error>
-
                         </mat-form-field>
                     </td>
                     <td>
@@ -61,12 +61,15 @@
                         </mat-form-field>
                     </td>
                 </tr>
+
+                <button class="btn" mat-flat-button matStepperNext color="primary">Next</button>
+
             </table>
+        </form>
+    </mat-step>
 
-            <button class="btn" mat-flat-button matStepperNext color="primary">Next</button>
-        </mat-step>
-
-        <mat-step linear="true" label="Address" state="home">
+    <mat-step linear="true" label="Address" state="home" [stepControl]="userAddressForm">
+        <form [formGroup]='userAddressForm'>
 
             <p>
                 <mat-form-field class="example-full-width" appearance="fill">
@@ -75,6 +78,7 @@
                     <mat-error>Please fill this field</mat-error>
                 </mat-form-field>
             </p>
+
             <table class="example-full-width" cellspacing="0">
                 <tr>
                     <td>
@@ -94,7 +98,8 @@
                     <td>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Postal Code</mat-label>
-                            <input autocomplete="off" formControlName="postalCode" matInput #postalCode minlength="5" maxlength="10">
+                            <input autocomplete="off" formControlName="postalCode" matInput #postalCode minlength="5"
+                                maxlength="10">
                             <mat-error>Please fill this field. Ex: 411033</mat-error>
                         </mat-form-field>
                     </td>
@@ -103,24 +108,28 @@
 
             <button class="btn" mat-raised-button matStepperPrevious>Back</button>
             <button class="btn" mat-flat-button matStepperNext color="primary">Next</button>
-        </mat-step>
 
-        <mat-step label="Contact Details" state="contact">
+        </form>
+    </mat-step>
 
+    <mat-step label="Contact Details" state="contact" [stepControl]="userContactDetailForm">
+        <form [formGroup]='userContactDetailForm'>
 
             <table class="example-full-width" cellspacing="0">
                 <tr>
                     <td>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Email</mat-label>
-                            <input autocomplete="off" formControlName="emailID" type="email" matInput placeholder="Ex. pat@example.com">
+                            <input autocomplete="off" formControlName="emailID" type="email" matInput
+                                placeholder="Ex. pat@example.com">
                             <mat-error>Please fill this field, Ex: name@service.in</mat-error>
                         </mat-form-field>
                     </td>
                     <td>
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Mobile</mat-label>
-                            <input autocomplete="off" formControlName="mobileNum" type="tel" matInput minlength="10" maxlength="14">
+                            <input autocomplete="off" formControlName="mobileNum" type="tel" matInput minlength="10"
+                                maxlength="14">
                             <mat-error>Please fill this field, Ex: +91 555-555-5555 without "-" & Space
                             </mat-error>
                         </mat-form-field>
@@ -130,9 +139,12 @@
 
             <button class="btn" mat-raised-button matStepperPrevious>Back</button>
             <button class="btn" mat-flat-button matStepperNext color="primary">Next</button>
-        </mat-step>
 
-        <mat-step label="Message" state="message">
+        </form>
+    </mat-step>
+
+    <mat-step label="Message" state="message" [stepControl]="userMessageForm">
+        <form [formGroup]='userMessageForm'>
 
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Message</mat-label>
@@ -142,10 +154,15 @@
             </mat-form-field>
 
             <button class="btn" mat-raised-button matStepperPrevious>Back</button>
-            <button [disabled]="userInfoForm.invalid" class="btn" mat-flat-button matStepperNext color="primary"
-                (click)="onSubmit()">Submit</button>
-            <span class="error_msg" [hidden]="userInfoForm.valid">Make sure to fill all input fields correctly to submit
+            <button
+                [disabled]="userInfoForm.invalid || userAddressForm.invalid || userContactDetailForm.invalid || userMessageForm.invalid"
+                class="btn" mat-flat-button matStepperNext color="primary" (click)="onSubmit()">Submit</button>
+            <span class="error_msg"
+                [hidden]="userInfoForm.valid && userAddressForm.valid && userContactDetailForm.valid && userMessageForm.valid">Make
+                sure to fill all input fields correctly to
+                submit
                 the form.</span>
-        </mat-step>
-    </form>
+        </form>
+    </mat-step>
+
 </mat-horizontal-stepper>

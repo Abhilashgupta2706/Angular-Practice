@@ -22,6 +22,9 @@ export class HorizontalStepperComponent implements OnInit {
 
   userForm: StepperForm = new StepperForm
   userInfoForm !: FormGroup
+  userAddressForm !: FormGroup
+  userContactDetailForm !: FormGroup
+  userMessageForm !: FormGroup
 
   userInformation!: string[]
 
@@ -32,37 +35,52 @@ export class HorizontalStepperComponent implements OnInit {
   }
 
   formInit() {
+    // this.userInfoForm = new FormGroup({
+    //   'fname': new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
+    //   'lname': new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
+    //   'age': new FormControl('', [Validators.required, Validators.pattern('[0-9]{0,2}')]),
+    //   'gender': new FormControl('', [Validators.required]),
+    // })
+
+    // this.userAddressForm = new FormGroup({
+    //   'address': new FormControl('', [Validators.required]),
+    //   'city': new FormControl('', [Validators.required, Validators.pattern(".*\\S.*[a-zA-z]*")]),
+    //   'state': new FormControl('', [Validators.required, Validators.pattern(".*\\S.*[a-zA-z]*")]),
+    //   'postalCode': new FormControl('', [Validators.required, Validators.pattern("[0-9]*")]),
+    // })
+
+    // this.userContactDetailForm = new FormGroup({
+    //   'emailID': new FormControl('', [Validators.required, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]),
+    //   'mobileNum': new FormControl('', [Validators.required, Validators.pattern('^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$')]),
+    // })
+
+    // this.userMessageForm = new FormGroup({
+    //   'message': new FormControl('', [Validators.required])
+    // })
+
     this.userInfoForm = new FormGroup({
-      'fname': new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
-      'lname': new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
-      'age': new FormControl('', [Validators.required, Validators.pattern('[0-9]{0,2}')]),
-      'gender': new FormControl('', [Validators.required]),
-
-      'address': new FormControl('', [Validators.required]),
-      'city': new FormControl('', [Validators.required, Validators.pattern(".*\\S.*[a-zA-z]*")]),
-      'state': new FormControl('', [Validators.required, Validators.pattern(".*\\S.*[a-zA-z]*")]),
-      'postalCode': new FormControl('', [Validators.required, Validators.pattern("[0-9]*")]),
-
-      'emailID': new FormControl('', [Validators.required, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]),
-      'mobileNum': new FormControl('', [Validators.required, Validators.pattern('^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$')]),
-
-      'message': new FormControl('', [Validators.required])
-
-      // 'fname': new FormControl('Abhilash', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
-      // 'lname': new FormControl('Gupta', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
-      // 'age': new FormControl('20', [Validators.required, Validators.pattern('[0-9]{0,2}')]),
-      // 'gender': new FormControl('male', [Validators.required]),
-
-      // 'address': new FormControl('603/2/5 Datta Mandir Road', [Validators.required]),
-      // 'city': new FormControl('Pune or Pimpri Chinchwade', [Validators.required, Validators.pattern(".*\\S.*[a-zA-z]*")]),
-      // 'state': new FormControl('Maharashtra', [Validators.required, Validators.pattern(".*\\S.*[a-zA-z]*")]),
-      // 'postalCode': new FormControl('411033', [Validators.required, Validators.pattern("[0-9]*")]),
-
-      // 'emailID': new FormControl('abhilashgupta@gmail.com', [Validators.required, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]),
-      // 'mobileNum': new FormControl('+918669152500', [Validators.required, Validators.pattern('^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$')]),
-
-      // 'message': new FormControl('lorem', [Validators.required])
+      'fname': new FormControl('Abhilash', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
+      'lname': new FormControl('Gupta', [Validators.required, Validators.pattern('[a-zA-Z]*')]),
+      'age': new FormControl('20', [Validators.required, Validators.pattern('[0-9]{0,2}')]),
+      'gender': new FormControl('male', [Validators.required]),
     })
+
+    this.userAddressForm = new FormGroup({
+      'address': new FormControl('603/2/5 Datta Mandir Road', [Validators.required]),
+      'city': new FormControl('Pune or Pimpri Chinchwade', [Validators.required, Validators.pattern(".*\\S.*[a-zA-z]*")]),
+      'state': new FormControl('Maharashtra', [Validators.required, Validators.pattern(".*\\S.*[a-zA-z]*")]),
+      'postalCode': new FormControl('411033', [Validators.required, Validators.pattern("[0-9]*")]),
+    })
+
+    this.userContactDetailForm = new FormGroup({
+      'emailID': new FormControl('abhilashgupta@gmail.com', [Validators.required, Validators.pattern('[a-z0-9]+@[a-z]+\.[a-z]{2,3}')]),
+      'mobileNum': new FormControl('+918669152500', [Validators.required, Validators.pattern('^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$')]),
+    })
+
+    this.userMessageForm = new FormGroup({
+      'message': new FormControl('This is a test message!', [Validators.required])
+    })
+
   }
 
   openDialog() {
@@ -98,19 +116,18 @@ export class HorizontalStepperComponent implements OnInit {
     var age = this.userInfoForm.value['age']
     var gender = this.userInfoForm.value['gender']
 
-    var address = this.userInfoForm.value['address']
-    var city = this.userInfoForm.value['city']
-    var state = this.userInfoForm.value['state']
-    var postalCode = this.userInfoForm.value['postalCode']
+    var address = this.userAddressForm.value['address']
+    var city = this.userAddressForm.value['city']
+    var state = this.userAddressForm.value['state']
+    var postalCode = this.userAddressForm.value['postalCode']
 
-    var emailID = this.userInfoForm.value['emailID']
-    var mobileNum = this.userInfoForm.value['mobileNum']
+    var emailID = this.userContactDetailForm.value['emailID']
+    var mobileNum = this.userContactDetailForm.value['mobileNum']
 
-    var message = this.userInfoForm.value['message']
+    var message = this.userMessageForm.value['message']
 
     this.userInformation = [fname, lname, age, gender, address, city, state, postalCode, emailID, mobileNum, message]
 
     this.openDialog()
-
   }
 }
