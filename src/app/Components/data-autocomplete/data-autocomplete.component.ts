@@ -31,9 +31,9 @@ export class DataAutocompleteComponent implements OnInit {
     // console.log(City.getAllCities())]
 
     this.locationForm = this.builder.group({
-      country: ['--Select an option--', Validators.required],
-      state: ['--Select an option--', Validators.required],
-      city: ['--Select an option--', Validators.required]
+      country: ['', Validators.required],
+      state: ['', Validators.required],
+      city: ['', Validators.required]
     })
     this.countries = Country.getAllCountries()
   }

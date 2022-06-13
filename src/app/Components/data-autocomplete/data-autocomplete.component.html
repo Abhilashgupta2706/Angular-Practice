@@ -2,33 +2,34 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
-                <h3>Select Country</h3>
-                <mat-select placeholder="Countries" formControlName="country" class="countries form-control"
+            <mat-form-field class="col-sm-4" appearance="fill">
+                <mat-label>Select Country</mat-label>
+                <mat-select placeholder="Countries" formControlName="country" class="countries"
                     (selectionChange)="countrySelected($event)" [(ngModel)]="selectedCountry">
+                    <mat-option>None</mat-option>
                     <mat-option *ngFor="let country of countries" [value]="country.isoCode">
                         {{country.name}}</mat-option>
                 </mat-select>
 
-            </div>
-            <div class="col-sm-4">
-                <h3>Select State</h3>
-                <mat-select placeholder="States" formControlName="state" class="states form-control"
+            </mat-form-field>
+            <mat-form-field class="col-sm-4" appearance="fill">
+                <mat-label>Select State</mat-label>
+                <mat-select placeholder="States" formControlName="state" class="states"
                     (selectionChange)="stateSelected($event)" [(ngModel)]="selectedState">
                     <mat-option *ngFor="let state of states" [value]="state.isoCode">{{state.name}}</mat-option>
                 </mat-select>
-            </div>
-            <div class="col-sm-4">
-                <h3>Select City</h3>
-                <mat-select placeholder="Cities" formControlName="city" class="cities form-control">
+            </mat-form-field>
+            <mat-form-field class="col-sm-4" appearance="fill">
+                <mat-label>Select City</mat-label>
+                <mat-select placeholder="Cities" formControlName="city" class="cities">
                     <mat-option *ngFor="let city of cities" [value]="city.name">{{city.name}}</mat-option>
                 </mat-select>
-            </div>
+            </mat-form-field>
         </div>
     </div>
 
     <div class="btns">
-        <button mat-raised-button (click)="onSubmit()" color="primary">Submit</button>
+        <button mat-raised-button [disabled]="locationForm.invalid" (click)="onSubmit()" color="primary">Submit</button>
         <button mat-raised-button (click)="locationForm.reset()" color="warn">Reset</button>
     </div>
 </form>
