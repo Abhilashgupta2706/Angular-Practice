@@ -4,28 +4,25 @@
         <div class="row">
             <div class="col-sm-4">
                 <h3>Select Country</h3>
-                <select formControlName="country" class="countries form-control"
-                    (change)="countrySelected($event.target)" [(ngModel)]="selectedCountry">
-                    <option selected value="Select country">--Select a country--</option>
-                    <option *ngFor="let country of countries" [value]="country.isoCode">
-                        {{country.name}}</option>
-                </select>
+                <mat-select placeholder="Countries" formControlName="country" class="countries form-control"
+                    (selectionChange)="countrySelected($event)" [(ngModel)]="selectedCountry">
+                    <mat-option *ngFor="let country of countries" [value]="country.isoCode">
+                        {{country.name}}</mat-option>
+                </mat-select>
 
             </div>
             <div class="col-sm-4">
                 <h3>Select State</h3>
-                <select formControlName="state" class="states form-control" (change)="stateSelected($event.target)"
-                    [(ngModel)]="selectedState">
-                    <option selected value="Select State">--Select a state--</option>
-                    <option *ngFor="let state of states" [value]="state.isoCode">{{state.name}}</option>
-                </select>
+                <mat-select placeholder="States" formControlName="state" class="states form-control"
+                    (selectionChange)="stateSelected($event)" [(ngModel)]="selectedState">
+                    <mat-option *ngFor="let state of states" [value]="state.isoCode">{{state.name}}</mat-option>
+                </mat-select>
             </div>
             <div class="col-sm-4">
                 <h3>Select City</h3>
-                <select formControlName="city" class="cities form-control">
-                    <option selected value="Select State">--Select a city--</option>
-                    <option *ngFor="let city of cities" [value]="city.name">{{city.name}}</option>
-                </select>
+                <mat-select placeholder="Cities" formControlName="city" class="cities form-control">
+                    <mat-option *ngFor="let city of cities" [value]="city.name">{{city.name}}</mat-option>
+                </mat-select>
             </div>
         </div>
     </div>
