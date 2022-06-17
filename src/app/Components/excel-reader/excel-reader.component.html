@@ -1,0 +1,27 @@
+<div class="file_upload">
+    <div>
+        <input #fileInput hidden="true" type="file" onclick="this.value=null" (change)="fileChanged($event)"
+            accept=".xlsx, .xls, .csv" />
+        <button mat-raised-button color="primary" (click)="fileInput.click()">
+            <mat-icon>upload</mat-icon> Upload File
+        </button>
+    </div>
+
+    <div class="after_upload">
+        <h3 class="file_name" *ngIf="fileUploaded">File uploaded: {{fileName}}</h3>
+
+        <button mat-raised-button color="secondary" class="file_name" (click)="readFile()" *ngIf="fileUploaded">Read
+            File</button>
+    </div>
+
+</div>
+
+<table>
+    <tbody>
+        <tr *ngFor="let row of fileData">
+            <td *ngFor="let cell of row">
+                {{cell}}
+            </td>
+        </tr>
+    </tbody>
+</table>
