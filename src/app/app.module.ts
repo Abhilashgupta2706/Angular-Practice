@@ -28,6 +28,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { StepperFormDialogBoxComponent } from './Components/stepper-form/stepper-form-dialog-box/stepper-form-dialog-box.component';
 import { DataAutocompleteComponent } from './Components/data-autocomplete/data-autocomplete.component';
 import { ExcelReaderComponent } from './Components/excel-reader/excel-reader.component';
+import { ProblemsComponent } from './Components/problems/problems.component';
+import { SplitStringAndIntegersComponent } from './Components/problems/split-string-and-integers/split-string-and-integers.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { ExcelReaderComponent } from './Components/excel-reader/excel-reader.com
     VerticalStepperComponent,
     StepperFormDialogBoxComponent,
     DataAutocompleteComponent,
-    ExcelReaderComponent
+    ExcelReaderComponent,
+    ProblemsComponent,
+    SplitStringAndIntegersComponent
   ],
   imports: [
     BrowserModule,

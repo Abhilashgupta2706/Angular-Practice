@@ -1,0 +1,38 @@
+<section class="problem_container">
+    <h1>Problem I encountered while learning Angular </h1>
+    <p>You can check it and try to solve it. I have also attached my solution for the Problem. If there is any optimized
+        solution that you might know then feel free to <a target="_blank" href="https://abhilashgupta.ml">contact me</a>
+    </p>
+
+    <div *ngFor="let problem of problems; let i = index" class="problem-statement-container">
+
+        <div class="problem-statement">
+            <h2>Problem Statement</h2>
+            <p>{{problem['problem-statement']}}</p>
+        </div>
+
+        <div class="examples">
+            <h3>Examples:</h3>
+            <ul>
+                <li>{{problem['example1']}}</li>
+                <li>{{problem['example2']}}</li>
+                <li>{{problem['example3']}}</li>
+                <li>{{problem['example4']}}</li>
+            </ul>
+        </div>
+
+        <div class="explanation">
+            <h3>Solution Explanation: </h3>
+            <p>{{problem['explanation']}}</p>
+        </div>
+
+        <div class="solution-btn">
+            <button mat-raised-button color="primary" (click)="openDialog()">Solution</button>
+        </div>
+
+        <!-- <div class="solution-outlet">
+            <router-outlet></router-outlet>
+        </div> -->
+    </div>
+
+</section>

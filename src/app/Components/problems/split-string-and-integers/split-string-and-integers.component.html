@@ -1,0 +1,47 @@
+<div class="solution_container">
+    <h1>My Solution:</h1>
+
+    <div>
+
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Num1</mat-label>
+            <input matInput [ngModelOptions]="{standalone: true}" type="number" [(ngModel)]="num1"
+                (ngModelChange)="num1Change($event)">
+            <mat-error *ngIf="num1==''">Must enter Num1</mat-error>
+            <button *ngIf="num1" matSuffix mat-icon-button aria-label="Clear" (click)="num1=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Num2</mat-label>
+            <input matInput [ngModelOptions]="{standalone: true}" type="number" [(ngModel)]="num2"
+                (ngModelChange)="num2Change($event)">
+            <button *ngIf="num2" matSuffix mat-icon-button aria-label="Clear" (click)="num2=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field class="example-form-field" appearance="fill">
+            <mat-label>Str</mat-label>
+            <input matInput [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="inputString"
+                (ngModelChange)="stringChange($event)">
+            <button *ngIf="inputString" matSuffix mat-icon-button aria-label="Clear" (click)="inputString=''">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+    </div>
+
+    <div *ngIf="errorString === ''">
+        <h3>Required String: <strong><em>{{requiredString}}</em></strong></h3>
+        <h3>Required Array: <strong><em>[{{requiredArray}}]</em></strong></h3>
+    </div>
+    <div *ngIf="errorString">
+        <h3 class="errorMsg">{{errorString}}</h3>
+    </div>
+
+    <div class="solution-btn">
+        <button mat-raised-button color="primary" [mat-dialog-close]="true">Close</button>
+    </div>
+</div>
