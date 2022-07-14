@@ -2,6 +2,7 @@
 
     <div class="container">
         <div class="row">
+
             <mat-form-field class="col-sm-4" appearance="fill">
                 <mat-label>Select Country</mat-label>
                 <mat-select placeholder="Countries" formControlName="country" class="countries"
@@ -10,8 +11,8 @@
                     <mat-option *ngFor="let country of countries" [value]="country.isoCode">
                         {{country.name}}</mat-option>
                 </mat-select>
-
             </mat-form-field>
+
             <mat-form-field class="col-sm-4" appearance="fill">
                 <mat-label>Select State</mat-label>
                 <mat-select placeholder="States" formControlName="state" class="states"
@@ -19,18 +20,21 @@
                     <mat-option *ngFor="let state of states" [value]="state.isoCode">{{state.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
+
             <mat-form-field class="col-sm-4" appearance="fill">
                 <mat-label>Select City</mat-label>
-                <mat-select placeholder="Cities" formControlName="city" class="cities">
+                <mat-select placeholder="Cities" formControlName="city" class="cities"
+                    (selectionChange)="citySelected($event)" [(ngModel)]="selectedCity">
                     <mat-option *ngFor="let city of cities" [value]="city.name">{{city.name}}</mat-option>
                 </mat-select>
             </mat-form-field>
+
         </div>
     </div>
 
     <div class="btns">
-        <button mat-raised-button [disabled]="locationForm.invalid" (click)="onSubmit()" color="primary">Submit</button>
-        <button mat-raised-button (click)="locationForm.reset()" color="warn">Reset</button>
+        <button mat-raised-button [disabled]="locationForm.invalid || locationForm.untouched" (click)="onSubmit()" color="primary">Submit</button>
+        <button mat-raised-button (click)="reset()" color="warn">Reset</button>
     </div>
 </form>
 
@@ -50,3 +54,8 @@
         <h3> City you selected: <strong>{{location[2]}}</strong></h3>
     </ng-template>
 </div>
+
+<ngx-spinner bdColor="rgba(0,0,0,0.8)" size="medium" color="#499cfa" type="ball-scale-ripple-multiple"
+    [fullScreen]="true">
+    <p style="color: white"> Loading Data.... </p>
+</ngx-spinner>

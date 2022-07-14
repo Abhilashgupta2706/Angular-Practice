@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgxSpinnerService } from "ngx-spinner";
 import { Country, State, City } from 'country-state-city/dist/';
 1
 @Component({
@@ -11,6 +12,7 @@ export class DataAutocompleteComponent implements OnInit {
 
   selectedCountry: number = 0;
   selectedState: number = 0;
+  selectedCity: number = 0;
 
   countries!: any[]
   states!: any[]
@@ -23,7 +25,10 @@ export class DataAutocompleteComponent implements OnInit {
   selectedCountryCode !: any
   selectedStateCode !: any
 
-  constructor(private builder: FormBuilder) { }
+  constructor(
+    private builder: FormBuilder,
+    private spinner: NgxSpinnerService
+  ) { }
 
   ngOnInit(): void {
     // console.log(Country.getAllCountries())
@@ -39,30 +44,54 @@ export class DataAutocompleteComponent implements OnInit {
   }
 
   countrySelected(country: any) {
+    this.cities = []
+    this.states = []
+
     this.selectedCountryCode = country.value
-    console.log(this.selectedCountryCode)
+    let countrySelected = Country.getCountryByCode(this.selectedCountryCode)
+    console.log("Selected Country:", countrySelected ? countrySelected['name'] : null)
+
     this.states = State.getStatesOfCountry(this.selectedCountryCode)
+    
+    this.selectedState = 0
+    this.selectedCity = 0
   }
 
   stateSelected(state: any) {
+    this.cities = []
+
     this.selectedStateCode = state.value
-    console.log(state.value)
+    let stateSelected = State.getStateByCodeAndCountry(this.selectedStateCode, this.selectedCountryCode)
+    console.log("Selected State:", stateSelected ? stateSelected['name'] : null)
+
     this.cities = City.getCitiesOfState(this.selectedCountryCode, this.selectedStateCode)
   }
 
+  citySelected(city: any) {
+    console.log("Selected City:", city.value)
+    this.selectedCity = city.value
+  }
+
   onSubmit() {
-    var countryCode = this.locationForm.value['country']
-    var country = Country.getCountryByCode(countryCode)
-
-    var stateCode = this.locationForm.value['state']
-    var state = State.getStateByCodeAndCountry(stateCode, countryCode)
-
-    var city = this.locationForm.value['city']
+    var country = Country.getCountryByCode(this.selectedCountryCode)
+    var state = State.getStateByCodeAndCountry(this.selectedStateCode, this.selectedCountryCode)
+    var city = this.selectedCity
 
     this.location = [
       country ? country['name'] : null,
       state ? state['name'] : null,
       city
     ]
+  }
+
+  reset() {
+    this.location = undefined
+    this.locationForm.reset()
+
+    this.selectedCountry = 0;
+    this.selectedState = 0;
+
+    this.states = []
+    this.cities = []
   }
 }
