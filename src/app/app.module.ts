@@ -30,6 +30,7 @@ import { DataAutocompleteComponent } from './Components/data-autocomplete/data-a
 import { ExcelReaderComponent } from './Components/excel-reader/excel-reader.component';
 import { ProblemsComponent } from './Components/problems/problems.component';
 import { SplitStringAndIntegersComponent } from './Components/problems/split-string-and-integers/split-string-and-integers.component';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { SplitStringAndIntegersComponent } from './Components/problems/split-str
     MatRadioModule,
     MatSelectModule,
     MatDialogModule,
-    MatStepperModule
+    MatStepperModule,
+    NgxSpinnerModule
   ],
   exports: [
     MatStepperModule

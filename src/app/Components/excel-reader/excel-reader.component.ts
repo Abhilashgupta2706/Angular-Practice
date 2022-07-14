@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as XLSX from 'xlsx';
-
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-excel-reader',
@@ -13,7 +13,7 @@ export class ExcelReaderComponent implements OnInit {
   fileName!: any
   fileData!: [][]
 
-  constructor() { }
+  constructor(private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
   }
@@ -33,6 +33,7 @@ export class ExcelReaderComponent implements OnInit {
   }
 
   readFile() {
+    this.spinner.show();
     // const file: DataTransfer = <DataTransfer>(fileInputEvent.target.files[0])
     const file: DataTransfer = <DataTransfer>(this.uploadedFile.target)
     if (file.files.length !== 1) throw new Error('Cannot upload multiple files!')
@@ -48,6 +49,7 @@ export class ExcelReaderComponent implements OnInit {
 
       this.fileData = (XLSX.utils.sheet_to_json(workSheet, { header: 1 }))
       console.log(this.fileData)
+      this.spinner.hide();
     }
     reader.readAsBinaryString(file.files[0])
   }
