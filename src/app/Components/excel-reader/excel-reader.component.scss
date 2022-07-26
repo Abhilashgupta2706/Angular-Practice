@@ -1,5 +1,5 @@
 .file_upload {
-    margin: 16px auto;
+    margin: 15px auto;
     max-width: fit-content;
 
     display: flex;
@@ -16,6 +16,29 @@
 
         .file_name {
             margin: auto;
+        }
+    }
+}
+
+.table_container {
+    overflow: scroll;
+    border: 1px solid rgb(108, 108, 108);
+    height: 74vh;
+
+    table {
+        table-layout: fixed;
+        width: 100%;
+
+        tr:first-child > td {
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        td {
+            word-wrap: break-word;
+            padding: 8px 10px;
+            max-width: fit-content;
+            border: 1px solid black;
         }
     }
 }

@@ -53,4 +53,9 @@ export class ExcelReaderComponent implements OnInit {
     }
     reader.readAsBinaryString(file.files[0])
   }
+
+  clearFile() {
+    this.fileUploaded = false
+    this.fileData = []
+  }
 }

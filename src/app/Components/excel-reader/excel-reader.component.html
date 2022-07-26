@@ -10,21 +10,27 @@
     <div class="after_upload">
         <h3 class="file_name" *ngIf="fileUploaded">File uploaded: {{fileName}}</h3>
 
-        <button mat-raised-button color="secondary" class="file_name" (click)="readFile()" *ngIf="fileUploaded">Read
-            File</button>
+        <button mat-raised-button color="secondary" class="file_name" (click)="readFile()" *ngIf="fileUploaded">
+            Read File
+        </button>
+        <button mat-raised-button color="warn" (click)="clearFile()" *ngIf="fileUploaded">
+            Clear File
+        </button>
     </div>
 
 </div>
 
-<table>
-    <tbody>
-        <tr *ngFor="let row of fileData">
-            <td *ngFor="let cell of row">
-                {{cell}}
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div *ngIf="fileData.length  > 0" class="table_container">
+    <table>
+        <tbody>
+            <tr *ngFor="let row of fileData">
+                <td *ngFor="let cell of row">
+                    {{cell}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <ngx-spinner bdColor="rgba(0,0,0,0.8)" size="medium" color="#499cfa" type="ball-scale-ripple-multiple"
     [fullScreen]="true">
